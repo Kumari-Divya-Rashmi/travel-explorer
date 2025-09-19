@@ -1,4 +1,3 @@
-// Paste your API keys here
 const WEATHER_API_KEY = '731eccae45213cb17c205bd1a36cba71';
 const UNSPLASH_API_KEY = 'yJmfMKL_Xz9jochUKcy3WTJx98beGXg00f1t7lcdb00';
 
@@ -20,12 +19,13 @@ searchBtn.addEventListener('click', () => {
 });
 
 async function fetchData(city) {
-    // Show a loading message
+    // Show a loading message and prepare the container for fade-in
     destinationName.textContent = `Loading data for ${city}...`;
     resultsContainer.classList.remove('hidden');
+    resultsContainer.style.opacity = '0';
     weatherInfo.innerHTML = '';
     photoGallery.innerHTML = '';
-
+    
     try {
         // Fetch weather and photos in parallel
         const [weatherData, photosData] = await Promise.all([
@@ -38,9 +38,17 @@ async function fetchData(city) {
         displayPhotos(photosData);
         destinationName.textContent = city;
 
+        // Trigger the fade-in effect
+        setTimeout(() => {
+            resultsContainer.style.opacity = '1';
+            resultsContainer.style.maxHeight = '1000px'; 
+        }, 10);
+
     } catch (error) {
         console.error('Error fetching data:', error);
         destinationName.textContent = `Could not fetch data for ${city}. Please try again.`;
+        resultsContainer.style.opacity = '1';
+        resultsContainer.style.maxHeight = '1000px';
     }
 }
 
@@ -66,12 +74,12 @@ async function fetchPhotos(city) {
 
 // Function to display weather information
 function displayWeather(data) {
-    const temp = data.main.temp;
+    const temp = Math.round(data.main.temp);
     const description = data.weather[0].description;
     const icon = data.weather[0].icon;
 
     weatherInfo.innerHTML = `
-        <img src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon">
+        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon">
         <p><strong>Temperature:</strong> ${temp}°C</p>
         <p><strong>Condition:</strong> ${description}</p>
     `;
