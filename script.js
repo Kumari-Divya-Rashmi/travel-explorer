@@ -1,5 +1,5 @@
-const WEATHER_API_KEY = '731eccae45213cb17c205bd1a36cba71';
-const UNSPLASH_API_KEY = 'yJmfMKL_Xz9jochUKcy3WTJx98beGXg00f1t7lcdb00';
+const WEATHER_API_KEY = API_KEYS.WEATHER;
+const UNSPLASH_API_KEY = API_KEYS.UNSPLASH;
 
 // Get references to HTML elements
 const cityInput = document.getElementById('city-input');
