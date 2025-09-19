@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Explorer 🗺️</h1>
+        <p>Enter a destination to get photos and weather information.</p>
+
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="e.g., Paris, Tokyo, New York">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <div id="results-container" class="hidden">
+            <h2 id="destination-name"></h2>
+            
+            <h3>Weather</h3>
+            <div id="weather-info">
+                </div>
+
+            <h3>Photos</h3>
+            <div id="photo-gallery">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
